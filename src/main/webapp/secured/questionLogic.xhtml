@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+<ui:include src="../snippets/head.xhtml"/>
+<h:body>
+    <f:view>
+        <div class="questionBox classicText">
+            <h:form>
+                <c:choose>
+                    <c:when test="#{questionLogicBean.actualQuestion != null}">
+                        <h:outputLabel styleClass="classicText" id="questionPhrase" for="answers" value="#{questionLogicBean.actualQuestion.id}. #{questionLogicBean.actualQuestion.questionPhrase} (#{questionLogicBean.actualQuestion.grammarSection})"/>
+                        <h:selectManyCheckbox styleClass="classicText" id="answers" value="#{questionLogicBean.actualChosenAnswers}">
+                            <c:set var="i" value="${0}"/>
+                            <c:forEach items="#{questionLogicBean.actualQuestion.possibleAnswers}" var="answere">
+                                <f:selectItem itemValue="${i}" itemLabel="${answere}"/>
+                                <c:set var="i" value="${i+1}"/>
+                            </c:forEach>
+                        </h:selectManyCheckbox>
+                        <h:commandButton action="#{questionLogicBean.previousAndSaveAnswer}" value="zurück">
+                            <f:ajax execute="questionPhrase answers" render="questionPhrase question"/>
+                        </h:commandButton>
+                        <h:commandButton action="#{questionLogicBean.saveAnswerAndQuit}" value="speichern und verlassen"/>
+                        <h:commandButton action="#{questionLogicBean.nextAndSaveAnswer}" value="weiter">
+                            <f:ajax execute="questionPhrase answers" render="questionPhrase question"/>
+                        </h:commandButton>
+                    </c:when>
+                    <c:otherwise>
+                        <h:outputLabel value="Sie haben den Test abgeschlossen."/>
+                        <h:commandButton action="#{questionLogicBean.saveAnswerAndQuit}" value="speichern und verlassen"/>
+                    </c:otherwise>
+                </c:choose>
+            </h:form>
+        </div>
+    </f:view>
+</h:body>
+</html>

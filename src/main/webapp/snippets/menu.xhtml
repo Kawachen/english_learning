@@ -1,0 +1,28 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <div class="nav">
+        <h:outputLabel styleClass="classicHeading" value="Englischtest des Lichtenberg Oberstufengymnasiums Bruchköbel"/>
+        <c:if test="#{userBean.isUserTeacherOrAdmin}">
+            <h:link outcome="getQuestion" value="Fragen bearbeiten"/>
+            <h:link outcome="getAccessTokens" value="Tokens erstellen"/>
+        </c:if>
+        <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn classicHeading">#{userBean.userName}</button>
+            <div id="myDropdown" class="dropdown-content">
+                <c:if test="#{userBean.isUserAdmin}">
+                    <h:link outcome="registerUser" value="Benutzer anlegen"/>
+                    <h:link outcome="deleteUser" value="Benutzer löschen"/>
+                </c:if>
+                <h:link outcome="changePassword" value="Passwort ändern"/>
+                <h:link outcome="welcome" value="zur Startseite"/>
+                <h:form>
+                    <h:commandLink action="#{loginBean.logout}" value="abmelden"/>
+                </h:form>
+            </div>
+        </div>
+    </div>
+</ui:composition>

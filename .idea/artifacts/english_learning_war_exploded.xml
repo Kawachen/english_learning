@@ -1,0 +1,27 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="english_learning:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/english_learning_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="english_learning" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: com.itextpdf:itextpdf:5.5.10" />
+          <element id="library" level="project" name="Maven: org.apache.pdfbox:pdfbox:2.0.4" />
+          <element id="library" level="project" name="Maven: org.apache.pdfbox:fontbox:2.0.4" />
+          <element id="library" level="project" name="Maven: commons-logging:commons-logging:1.2" />
+          <element id="library" level="project" name="Maven: com.sun.faces:jsf-api:2.2.8" />
+          <element id="library" level="project" name="Maven: com.sun.faces:jsf-impl:2.2.8" />
+          <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.39" />
+          <element id="library" level="project" name="Maven: commons-validator:commons-validator:1.4.1" />
+          <element id="library" level="project" name="Maven: commons-beanutils:commons-beanutils:1.8.3" />
+          <element id="library" level="project" name="Maven: commons-digester:commons-digester:1.8.1" />
+          <element id="library" level="project" name="Maven: commons-collections:commons-collections:3.2.1" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="english_learning/web/Web" />
+    </root>
+  </artifact>
+</component>

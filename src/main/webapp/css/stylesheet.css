@@ -1,0 +1,108 @@
+.nav {
+    background-color: #0077bc;
+    font-family: arial;
+}
+
+.nav a {
+    color: rgba(255,255,255,.7);
+    padding: 16px;
+    display: inline;
+    text-decoration: none;
+}
+
+.nav a:hover {
+    background-color: #2980B9;
+}
+
+.classicText {
+    font-family: arial;
+    text-decoration: none;
+}
+
+.classicHeading {
+    font-family: arial;
+    text-decoration: none;
+    color: rgba(255,255,255,.7);
+    padding: 16px;
+    font-size: 16px;
+}
+
+.classicBox {
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:20px;
+    background-color: #f2f2f2;
+    width: 500px;
+    padding: 16px;
+    border-radius: 2px;
+}
+
+.questionBox {
+    margin:auto;
+    padding: 16px;
+    background-color: #f2f2f2;
+    width:60%;
+    border-radius:2px;
+}
+
+input[type="submit"], input[type="button"] {
+    background-color: #0077bc;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px 15px;
+    border: none;
+    margin: 5px;
+}
+
+input:hover[type="submit"], input:hover[type="button"] {
+    background-color: #2980B9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+
+}
+
+input[type=text],input[type=password], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.dropbtn {
+    background-color: #0077bc;
+    border: none;
+    cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #2980B9;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    display: block;
+    text-decoration: none;
+}
+
+.dropdown a:hover {background-color: #ddd}
+
+.show {display:block;}

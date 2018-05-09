@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+<ui:include src="../../snippets/head.xhtml"/>
+<f:view>
+    <ui:include src="../../snippets/menu.xhtml"/>
+    <div class="classicText classicBox">
+        <h:outputLabel value="Hier können sie neue Fragen in das System eingeben."/><br/>
+        <c:if test="#{editQuestionBean.editQuestionResult != null}">
+            <h:outputLabel value="#{editQuestionBean.editQuestionResult.description}"/><br/>
+        </c:if>
+        <h:outputLabel value="#{editQuestionBean.editQuestionError.description}"/><br/>
+        <h:form>
+            <h:outputLabel for="questionPhrase" value="Frage"/><br/>
+            <h:inputText id="questionPhrase" value="#{editQuestionBean.questionPhrase}"/><br/>
+            <h:outputLabel for="grammarSection" value="Grammatikbereich"/><br/>
+            <h:inputText id="grammarSection" value="#{editQuestionBean.grammarSection}"/><br/>
+            <h:outputLabel for="exercise" value="Übungen"/><br/>
+            <h:inputText id="exercise" value="#{editQuestionBean.exercise}"/><br/>
+            <h:outputLabel value="Mögliche Antworten"/><br/>
+            <h:inputText value="#{editQuestionBean.possibleAnswer1}"/><br/>
+            <h:inputText value="#{editQuestionBean.possibleAnswer2}"/><br/>
+            <h:inputText value="#{editQuestionBean.possibleAnswer3}"/><br/>
+            <h:inputText value="#{editQuestionBean.possibleAnswer4}"/><br/>
+            <h:outputLabel value="Richtige Antwort/en"/>
+            <h:selectManyCheckbox value="#{editQuestionBean.correctAnswers}" converter="javax.faces.Integer">
+                <f:selectItem itemValue="0" itemLabel="Antwort 1"/>
+                <f:selectItem itemValue="1" itemLabel="Antwort 2"/>
+                <f:selectItem itemValue="2" itemLabel="Antwort 3"/>
+                <f:selectItem itemValue="3" itemLabel="Antwort 4"/>
+            </h:selectManyCheckbox>
+            <h:commandButton action="#{editQuestionBean.saveNewQuestion}" value="Frage anlegen"/>
+        </h:form>
+        <h:button outcome="getQuestion" value="zurück zur Übersicht"/>
+    </div>
+</f:view>
+</html>

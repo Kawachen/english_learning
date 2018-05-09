@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:javaee="http://java.sun.com/xml/ns/javaee"
+         xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+         id="JSF2HelloWorldUsingMaven_ID" version="2.4">
+    <display-name>Englischtest</display-name>
+    <!-- auth filter -->
+    <filter>
+        <filter-name>AuthorizationFilter</filter-name>
+        <filter-class>Filter.AuthorizationFilter</filter-class>
+    </filter>
+    <filter>
+        <filter-name>TeacherSectionFilter</filter-name>
+        <filter-class>Filter.TeacherSectionFilter</filter-class>
+    </filter>
+    <filter>
+        <filter-name>AdminSectionFilter</filter-name>
+        <filter-class>Filter.AdminSectionFilter</filter-class>
+    </filter>
+    <!-- filter mapping -->
+    <filter-mapping>
+        <filter-name>AuthorizationFilter</filter-name>
+        <url-pattern>/secured/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>TeacherSectionFilter</filter-name>
+        <url-pattern>/secured/teacher-section/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AdminSectionFilter</filter-name>
+        <url-pattern>/secured/teacher-section/admin-section/*</url-pattern>
+    </filter-mapping>
+    <servlet>
+        <servlet-name>JSF Servlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>JSF Servlet</servlet-name>
+        <url-pattern>*.xhtml</url-pattern>
+    </servlet-mapping>
+    <welcome-file-list>
+        <welcome-file>index.xhtml</welcome-file>
+    </welcome-file-list>
+</web-app>

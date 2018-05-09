@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+    <h:form>
+        <h:outputLabel value="Antworten:"/><br/>
+        <h:inputText value="#{testBean.possibleAnswers[0]}"/>
+        <h:inputText value="#{testBean.possibleAnswers[1]}"/>
+        <h:inputText value="#{testBean.possibleAnswers[2]}"/>
+        <h:inputText value="#{testBean.possibleAnswers[3]}"/>
+        <h:selectManyCheckbox id="answers" value="#{testBean.correctAnswers}" converter="javax.faces.Integer">
+            <f:selectItem itemValue="0" itemLabel="Antwort 1"/>
+            <f:selectItem itemValue="1" itemLabel="Antwort 2"/>
+            <f:selectItem itemValue="2" itemLabel="Antwort 3"/>
+            <f:selectItem itemValue="3" itemLabel="Antwort 4"/>
+        </h:selectManyCheckbox>
+        <h:commandButton action="#{testBean.test}" value="test"/>
+    </h:form>
+</f:view>
+</html>

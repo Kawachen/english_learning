@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+<ui:include src="../../../snippets/head.xhtml"/>
+<h:body>
+    <f:view>
+        <ui:include src="../../../snippets/menu.xhtml"/>
+        <div class="classicText classicBox">
+            <h1>Neuen Benutzer anlegen</h1>
+            <c:if test="#{registrationBean.registrationResult != null}">
+                <h:outputLabel value="#{registrationBean.registrationResult.description}"/><br/>
+            </c:if>
+            <h:outputLabel value="#{registrationBean.registrationError.description}"/><br/>
+            <h:form>
+                <h:outputLabel for="firstName" value="Vorname:"/><br/>
+                <h:inputText id="firstName" value="#{registrationBean.firstName}"/><br/>
+                <h:outputLabel for="lastName" value="Nachname:"/><br/>
+                <h:inputText id="lastName" value="#{registrationBean.lastName}"/><br/>
+                <h:outputLabel for="email" value="E-Mail Adresse:"/><br/>
+                <h:inputText id="email" value="#{registrationBean.emailAddress}"/><br/>
+                <h:outputLabel for="role" value="Rolle"/><br/>
+                <h:selectOneMenu id="role" value="#{registrationBean.role}">
+                    <f:selectItem itemValue="STUDENT" itemLabel="Schüler"/>
+                    <f:selectItem itemValue="TEACHER" itemLabel="Lehrer"/>
+                    <f:selectItem itemValue="ADMIN" itemLabel="Admin"/>
+                </h:selectOneMenu>
+                <br/>
+                <h:commandButton action="#{registrationBean.registerNewUserByAdmin}" value="Benutzer anlegen"/>
+            </h:form>
+            <c:if test="#{registrationBean.password != null}">
+                <h:outputLabel value="Hier ist das generierte Passwort:"/><br/>
+                <h:outputLabel value="#{registrationBean.passwordUnHashed}"/><br/>
+                <h:outputLabel value="Bitte weisen sie den Benutzer darauf hin, sein Passwort schnellstmöglich zu ändern!"/><br/>
+            </c:if>
+        </div>
+    </f:view>
+</h:body>
+</html>

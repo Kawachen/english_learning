@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+<ui:include src="../snippets/head.xhtml"/>
+<f:view>
+    <ui:include src="../snippets/menu.xhtml"/>
+    <div class="classicText">
+        <h:form>
+            <h:commandButton action="#{resultLogicBean.downloadFile}" value="als PDF downloaden"/>
+        </h:form>
+        <h:outputLabel value="Deine Bearbeitungszeit in Millisekunden:"/><br/>
+        <h:outputLabel value="#{resultLogicBean.testWorkingTime}"/><br/>
+        <h:outputLabel value="Fehler insgesammt: #{resultLogicBean.result.countTotalMistakes}" /><br/>
+        <h:dataTable value="#{resultLogicBean.result.mistakeAnswers}" var="mistakeAnswer" border="1">
+            <h:column>
+                <f:facet name="header">ID</f:facet>
+                #{mistakeAnswer.questionId}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Frage</f:facet>
+                #{mistakeAnswer.questionPhrase}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Grammatik</f:facet>
+                #{mistakeAnswer.grammarSection}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Antwortmöglichkeiten</f:facet>
+                <h:dataTable value="#{mistakeAnswer.possibleAnswers}" var="possibleAnswer">
+                    <h:column>
+                        #{mistakeAnswer.possibleAnswers.indexOf(possibleAnswer)+1}. #{possibleAnswer}
+                    </h:column>
+                </h:dataTable>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Richtige Antwort/en</f:facet>
+                <h:dataTable value="#{mistakeAnswer.correctAnswers}" var="correctAnswer">
+                    <h:column>
+                        #{correctAnswer+1}. #{mistakeAnswer.possibleAnswers.get(correctAnswer)}
+                    </h:column>
+                </h:dataTable>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Deine Antwort/en</f:facet>
+                <h:dataTable value="#{mistakeAnswer.chosenAnswers}" var="chosenAnswer">
+                    <h:column>
+                        #{chosenAnswer+1}. #{mistakeAnswer.possibleAnswers.get(chosenAnswer)}
+                    </h:column>
+                </h:dataTable>
+            </h:column>
+            <h:column>
+                <f:facet name="header">Übungen</f:facet>
+                #{mistakeAnswer.exercise}
+            </h:column>
+        </h:dataTable>
+    </div>
+</f:view>
+</html>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+<head>
+    <link href="./css/stylesheet.css" rel="stylesheet" type="text/css" />
+</head>
+<f:view>
+    <div class="classicText classicBox">
+        <h1>Registrierung</h1>
+        <h:outputLabel value="#{registrationBean.registrationError.description}"/><br/>
+        <h:form>
+            <h:outputLabel for="accessToken" value="Token"/><br/>
+            <h:inputText id="accessToken" value="#{registrationBean.accessToken}"/><br/>
+            <h:outputLabel for="email" value="Email-Adresse"/><br/>
+            <h:inputText id="email" value="#{registrationBean.emailAddress}"/><br/>
+            <h:outputLabel for="firstName" value="Vorname"/><br/>
+            <h:inputText id="firstName" value="#{registrationBean.firstName}"/><br/>
+            <h:outputLabel for="lastName" value="Nachname"/><br/>
+            <h:inputText id="lastName" value="#{registrationBean.lastName}"/><br/>
+            <h:outputLabel for="password" value="Passwort"/><br/>
+            <h:inputSecret id="password" value="#{registrationBean.password}"/><br/>
+            <h:outputLabel for="repeatPassword" value="Passwort wiederholen"/>
+            <h:inputSecret id="repeatPassword" value="#{registrationBean.repeatPassword}"/>
+            <h:commandButton action="#{registrationBean.registerNewUser}" value="registrieren"/><br/>
+        </h:form>
+    </div>
+</f:view>
+</html>

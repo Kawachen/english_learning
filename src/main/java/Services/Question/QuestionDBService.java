@@ -138,12 +138,12 @@ public class QuestionDBService implements QuestionDBInterface {
     }
 
     private void insertNewQuestionWithId(Question question) throws SQLException {
-        PreparedStatement preparedStatement = dBConnection.prepareStatement("INSERT INTO question (id, questionPhrase, grammarSection, exercise) VALUE (?, ?, ?, ?)");
-        preparedStatement.setString(1, Integer.toString(question.getId()));
-        preparedStatement.setString(2, question.getQuestionPhrase());
-        preparedStatement.setString(3, question.getGrammarSection());
-        preparedStatement.setString(4, question.getExercise());
-        preparedStatement.executeUpdate();
+        PreparedStatement preparedStatementQuestion = dBConnection.prepareStatement("INSERT INTO question (id, questionPhrase, grammarSection, exercise) VALUE (?, ?, ?, ?);");
+        preparedStatementQuestion.setString(1, Integer.toString(question.getId()));
+        preparedStatementQuestion.setString(2, question.getQuestionPhrase());
+        preparedStatementQuestion.setString(3, question.getGrammarSection());
+        preparedStatementQuestion.setString(4,question.getExercise());
+        preparedStatementQuestion.executeUpdate();
         for(String possibleAnswer: question.getPossibleAnswers()) {
             PreparedStatement preparedStatementPossibleAnswer = dBConnection.prepareStatement("INSERT INTO possibleAnsweres (question_id, possibleAnswer) VALUES (?, ?)");
             preparedStatementPossibleAnswer.setString(1, Integer.toString(question.getId()));

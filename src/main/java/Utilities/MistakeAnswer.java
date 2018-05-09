@@ -8,9 +8,9 @@ public class MistakeAnswer {
     private String questionPhrase;
     private String grammarSection;
     private String exercise;
-    private ArrayList<Integer> chosenAnswers = new ArrayList<Integer>();
-    private ArrayList<Integer> correctAnswers = new ArrayList<Integer>();
-    private ArrayList<String> possibleAnswers = new ArrayList<String>();
+    private ArrayList<Integer> chosenAnswers;
+    private ArrayList<Integer> correctAnswers;
+    private ArrayList<String> possibleAnswers;
 
     public MistakeAnswer(int questionId, String questionPhrase, ArrayList<Integer> chosenAnswers, ArrayList<Integer> correctAnswers, ArrayList<String> possibleAnswers, String grammarSection, String exercise) {
         this.questionId = questionId;

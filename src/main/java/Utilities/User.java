@@ -46,16 +46,12 @@ public class User {
         this.userPassword.salt = salt;
     }
 
-    public String getFirstName() {
-        return userName.firstname;
+    public String getUserName() {
+        return userName.toString();
     }
 
     public void setFirstName(String firstName) {
         this.userName.firstname = firstName;
-    }
-
-    public String getLastName() {
-        return userName.lastname;
     }
 
     public void setLastName(String lastName) {

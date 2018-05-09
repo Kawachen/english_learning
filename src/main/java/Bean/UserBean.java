@@ -27,7 +27,7 @@ public class UserBean {
     }
 
     public String getUserName() {
-        return this.user.getFirstName()+" "+this.user.getLastName();
+        return user.getUserName();
     }
 
     public boolean getIsUserTeacherOrAdmin() {
@@ -43,7 +43,7 @@ public class UserBean {
         ArrayList<User> users = this.userService.getAllUsers();
         if(!this.search.equalsIgnoreCase("")) {
             for (User user:users) {
-                if(user.getFirstName().contains(this.search) || user.getLastName().contains(this.search) || user.getEmailAddress().contains(this.search)) {
+                if(user.getUserName().contains(this.search) || user.getEmailAddress().contains(this.search)) {
                     result.add(user);
                 }
             }

@@ -12,5 +12,5 @@ public interface QuestionDBInterface {
 
     void updateQuestionInDB(Question question);
 
-    void updateAllQuestionsInDB(ArrayList<Question> questions);
+    void deleteQuestionByIdAndUpdateApplicationIds(int dBQuestionId);
 }

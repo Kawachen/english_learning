@@ -39,16 +39,22 @@ public class UserBean {
     }
 
     public ArrayList<User> getAllUserWithSearch() {
-        ArrayList<User> result = new ArrayList<User>();
+        ArrayList<User> result;
         ArrayList<User> users = this.userService.getAllUsers();
         if(!this.search.equalsIgnoreCase("")) {
-            for (User user:users) {
-                if(user.getUserName().contains(this.search) || user.getEmailAddress().contains(this.search)) {
-                    result.add(user);
-                }
-            }
+            result = searchForUsers(users, search);
         } else {
             result = users;
+        }
+        return result;
+    }
+
+    private ArrayList<User> searchForUsers(ArrayList<User> users, String search) {
+        ArrayList<User> result = new ArrayList<>();
+        for (User user:users) {
+            if(user.getUserName().contains(this.search) || user.getEmailAddress().contains(this.search)) {
+                result.add(user);
+            }
         }
         return result;
     }

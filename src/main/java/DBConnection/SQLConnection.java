@@ -16,7 +16,6 @@ public class SQLConnection implements DBInterface {
             try {
                 connections[i] = DriverManager.getConnection("jdbc:mysql://localhost:3306/englishtest?"
                         + "user=root&password=norenezar#123");
-                System.out.println("successfull");
             } catch(SQLException e) {
                 e.printStackTrace();
                 System.err.println("ERROR: Connection to database failed!");

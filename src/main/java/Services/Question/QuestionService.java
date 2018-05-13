@@ -46,9 +46,19 @@ public class QuestionService {
         questionDBService.updateQuestionInDB(question);
     }
 
-    public void deleteQuestionByIdAndFromDB(int questionId) {
+    public void deleteQuestionByIdAndUpdateDB(int questionId) {
         int questionIndex = questionId -1;
+        int dBQuestionId = questions.get(questionIndex).getdBId();
+        updateQuestionIds(questionIndex);
         this.questions.remove(questionIndex);
-        questionDBService.updateAllQuestionsInDB(questions);
+        questionDBService.deleteQuestionByIdAndUpdateApplicationIds(dBQuestionId);
+    }
+
+    private void updateQuestionIds(int questionIndex) {
+        for(int i = questionIndex; i < questions.size(); i++) {
+            Question question = questions.get(i);
+            question.setId(question.getId()-1);
+            questions.set(i, question);
+        }
     }
 }

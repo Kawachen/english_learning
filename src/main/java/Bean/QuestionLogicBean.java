@@ -40,12 +40,12 @@ public class QuestionLogicBean {
     public Question getActualQuestion() {
         if(this.actualQuestionId <= this.questionService.getCountOfQuestions() && this.actualQuestionId >= this.firstQuestionId) {
             this.actualQuestion = questionService.getQuestionById(actualQuestionId);
-            this.setChosenAnswersIfTheresAPreviousGivenAnswer();
+            this.setChosenAnswersIfThereIsAPreviousGivenAnswer();
             return this.actualQuestion;
         } else if(this.actualQuestionId < this.firstQuestionId) {
             this.actualQuestionId++;
             this.actualQuestion = questionService.getQuestionById(actualQuestionId);
-            this.setChosenAnswersIfTheresAPreviousGivenAnswer();
+            this.setChosenAnswersIfThereIsAPreviousGivenAnswer();
             return this.actualQuestion;
         } else {
             this.actualQuestion = null;
@@ -77,7 +77,7 @@ public class QuestionLogicBean {
     }
 
     private void createAnswerAndAddItToAnswerList() {
-        Answer answer = new Answer(actualQuestion.getId(), actualQuestion.getQuestionPhrase());
+        Answer answer = new Answer(actualQuestion.getId());
         for(int chosenAnswer : this.actualChosenAnswers) {
             answer.addChosenAnswer(chosenAnswer);
         }
@@ -89,7 +89,7 @@ public class QuestionLogicBean {
         this.answerService.addNewAnswer(answer);
     }
 
-    private void setChosenAnswersIfTheresAPreviousGivenAnswer() {
+    private void setChosenAnswersIfThereIsAPreviousGivenAnswer() {
         Answer answer = this.answerService.getAnswerByQuestionId(actualQuestionId);
         if(answer != null) {
             this.actualChosenAnswers = new int[answer.getChosenAnswers().size()];

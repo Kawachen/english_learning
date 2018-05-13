@@ -12,7 +12,7 @@ public class AnswerServiceTest {
 
     private User user = new User("Kai", "Wachendoerfer", "kaiwach@web.de", "ddf", 667);
     private AnswerService answerService = new AnswerService(user);
-    private Answer answer = new Answer(1, "blabla");
+    private Answer answer = new Answer(1);
     private Connection connection;
 
     public AnswerServiceTest() {

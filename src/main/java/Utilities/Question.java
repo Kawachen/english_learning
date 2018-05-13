@@ -77,4 +77,12 @@ public class Question {
     public void setExercise(String exercise) {
         this.exercise = exercise;
     }
+
+    public int getdBId() {
+        return dBId;
+    }
+
+    public void setdBId(int dBId) {
+        this.dBId = dBId;
+    }
 }

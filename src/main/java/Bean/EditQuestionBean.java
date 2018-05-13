@@ -47,13 +47,13 @@ public class EditQuestionBean {
     }
 
     public String deleteQuestion() {
-        this.questionService.deleteQuestionByIdAndFromDB(questionId);
+        this.questionService.deleteQuestionByIdAndUpdateDB(questionId);
         return "allQuestions";
     }
 
     public String deleteQuestion(int questionId) {
         this.questionId = questionId;
-        this.questionService.deleteQuestionByIdAndFromDB(questionId);
+        this.questionService.deleteQuestionByIdAndUpdateDB(questionId);
         return "allQuestions";
     }
 

@@ -69,13 +69,11 @@ public class AnswerDBService implements AnswerDBInterface {
             if(resultSet.isFirst()) {
                 result_id_previous = resultSet.getInt(1);
                 answer.setQuestionId(resultSet.getInt("question_id"));
-                answer.setQuestionPhrase(resultSet.getString("questionPhrase"));
             } else if(result_id_previous < resultSet.getInt(1)) {
                 answers.add(answer);
                 answer = new Answer();
                 result_id_previous = resultSet.getInt(1);
                 answer.setQuestionId(resultSet.getInt("question_id"));
-                answer.setQuestionPhrase(resultSet.getString("questionPhrase"));
             }
             if(chosenAnswers_id_previous < resultSet.getInt(6)) {
                 chosenAnswers_id_previous = resultSet.getInt(6);
@@ -88,11 +86,10 @@ public class AnswerDBService implements AnswerDBInterface {
 
     private void insertNewAnswersForUserId(Answer answer, User user) throws SQLException {
         Connection connection = this.connectionPool.getConnection();
-        PreparedStatement insertAnswer = connection.prepareStatement("INSERT INTO result (user_id, user_email, question_id, questionPhrase) VALUES (?, ?, ?, ?);");
+        PreparedStatement insertAnswer = connection.prepareStatement("INSERT INTO result (user_id, user_email, question_id) VALUES (?, ?, ?, ?);");
         insertAnswer.setString(1, Integer.toString(user.getId()));
         insertAnswer.setString(2, user.getEmailAddress());
         insertAnswer.setString(3, Integer.toString(answer.getQuestionId()));
-        insertAnswer.setString(4, answer.getQuestionPhrase());
         insertAnswer.executeUpdate();
         PreparedStatement selectLastInsertedId = connection.prepareStatement("SELECT id FROM result WHERE id = LAST_INSERT_ID();");
         ResultSet resultSet = selectLastInsertedId.executeQuery();

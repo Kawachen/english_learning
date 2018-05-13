@@ -5,12 +5,10 @@ import java.util.ArrayList;
 public class Answer {
     private int id;
     private int questionId;
-    private String questionPhrase;
     private ArrayList<Integer> chosenAnswers = new ArrayList<Integer>();
 
-    public Answer(int questionId, String questionPhrase) {
+    public Answer(int questionId) {
         this.setQuestionId(questionId);
-        this.setQuestionPhrase(questionPhrase);
     }
 
     public Answer() {}
@@ -29,14 +27,6 @@ public class Answer {
 
     public void setQuestionId(int questionId) {
         this.questionId = questionId;
-    }
-
-    public String getQuestionPhrase() {
-        return questionPhrase;
-    }
-
-    public void setQuestionPhrase(String questionPhrase) {
-        this.questionPhrase = questionPhrase;
     }
 
     public void addChosenAnswer(int chosenAnswer) {

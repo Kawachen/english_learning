@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class AnswerDBServiceTest {
 
     private User user = new User("Kai", "Wachendoerfer", "kaiwach@web.de", "ddf", 667);
-    private Answer answer = new Answer(1, "blabla");
+    private Answer answer = new Answer(1);
     private AnswerDBInterface answerDBService = new AnswerDBService();
     private Connection connection;
 
@@ -45,7 +45,6 @@ public class AnswerDBServiceTest {
         ArrayList<Answer> answers = this.answerDBService.selectAnswersByUserEmailAddressFromDB(user.getEmailAddress());
         assertEquals(1, answers.size());
         assertEquals(answer.getQuestionId(), answers.get(0).getQuestionId());
-        assertEquals(answer.getQuestionPhrase(), answers.get(0).getQuestionPhrase());
         assertEquals(answer.getChosenAnswers().size(), answers.get(0).getChosenAnswers().size());
         assertEquals(answer.getChosenAnswers().get(0), answers.get(0).getChosenAnswers().get(0));
         assertEquals(answer.getChosenAnswers().get(1), answers.get(0).getChosenAnswers().get(1));

@@ -47,6 +47,7 @@ public class RegistrationBean {
                         this.password = HashGeneratorUtils.generateSHA1(this.password+salt);
                         User user = new User(this.firstName, this.lastName, this.emailAddress, this.password, salt);
                         user.setRole(Role.STUDENT);
+                        userService.addNewUser(user);
                         this.accessTokenService.deleteLatestValidatedToken();
                         this.registrationResult = RegistrationResult.SUCCESSFULLY_REGISTERED;
                         return "login";

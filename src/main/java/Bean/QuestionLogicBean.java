@@ -18,7 +18,7 @@ public class QuestionLogicBean {
     private User user;
 
     private AnswerService answerService;
-    private QuestionService questionService = new QuestionService();
+    private QuestionService questionService;
 
     private Question actualQuestion;
     private int actualQuestionId;
@@ -35,6 +35,7 @@ public class QuestionLogicBean {
         this.actualQuestionId = this.answerService.getLatestAnswerQuestionId();
         this.firstQuestionId = this.actualQuestionId;
         this.startTime = new Timestamp(System.currentTimeMillis());
+        this.questionService = new QuestionService();
     }
 
     public Question getActualQuestion() {
@@ -81,12 +82,8 @@ public class QuestionLogicBean {
         for(int chosenAnswer : this.actualChosenAnswers) {
             answer.addChosenAnswer(chosenAnswer);
         }
-        this.addAnswerToAnswerList(answer);
-        this.actualChosenAnswers = null;
-    }
-
-    private void addAnswerToAnswerList(Answer answer) {
         this.answerService.addNewAnswer(answer);
+        this.actualChosenAnswers = null;
     }
 
     private void setChosenAnswersIfThereIsAPreviousGivenAnswer() {

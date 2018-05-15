@@ -104,13 +104,13 @@ public class QuestionDBService implements QuestionDBInterface {
     private ArrayList<Question> selectPossibleAndCorrectAnswersForEachQuestion(ArrayList<Question> questions) throws SQLException {
         for(int i=0;i<questions.size();i++) {
             PreparedStatement preparedStatementGetPossibleAnswers = dBConnection.prepareStatement("SELECT * FROM possibleanswer WHERE question_id = ? ORDER BY id ASC");
-            preparedStatementGetPossibleAnswers.setString(1, Integer.toString(questions.get(i).getId()));
+            preparedStatementGetPossibleAnswers.setString(1, Integer.toString(questions.get(i).getdBId()));
             ResultSet resultSetGetPossibleAnswers = preparedStatementGetPossibleAnswers.executeQuery();
             while(resultSetGetPossibleAnswers.next()) {
                 questions.get(i).addPossibleAnswer(resultSetGetPossibleAnswers.getString("possibleAnswer"));
             }
             PreparedStatement preparedStatementGetCorrectAnswers = dBConnection.prepareStatement("SELECT * FROM correctanswer WHERE question_id = ? ORDER BY id ASC");
-            preparedStatementGetCorrectAnswers.setString(1, Integer.toString(questions.get(i).getId()));
+            preparedStatementGetCorrectAnswers.setString(1, Integer.toString(questions.get(i).getdBId()));
             ResultSet resultSetGetCorrectAnswers = preparedStatementGetCorrectAnswers.executeQuery();
             while(resultSetGetCorrectAnswers.next()) {
                 questions.get(i).addCorrectAnswer(resultSetGetCorrectAnswers.getInt("correctAnswer"));

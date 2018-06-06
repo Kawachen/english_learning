@@ -1,4 +1,4 @@
-package Utilities;
+package Datamodel;
 
 import java.util.ArrayList;
 

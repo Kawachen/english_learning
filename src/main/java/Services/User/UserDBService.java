@@ -2,7 +2,7 @@ package Services.User;
 
 import DBConnection.DBConnection;
 import Exceptions.StringDidNotMatchOnRoleException;
-import Utilities.User;
+import Datamodel.User;
 
 import java.sql.*;
 import java.util.ArrayList;

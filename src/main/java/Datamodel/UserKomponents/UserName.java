@@ -1,4 +1,4 @@
-package Utilities.UserKomponents;
+package Datamodel.UserKomponents;
 
 public class UserName {
     public String firstname;

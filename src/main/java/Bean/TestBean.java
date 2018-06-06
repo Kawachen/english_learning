@@ -1,6 +1,6 @@
 package Bean;
 
-import Utilities.Question;
+import Datamodel.Question;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;

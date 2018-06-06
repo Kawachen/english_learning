@@ -1,6 +1,6 @@
 package Services.Question;
 
-import Utilities.Question;
+import Datamodel.Question;
 
 import java.util.ArrayList;
 

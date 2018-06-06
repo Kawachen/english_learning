@@ -1,7 +1,7 @@
 package Services.Question;
 
 import DBConnection.DBConnection;
-import Utilities.Question;
+import Datamodel.Question;
 
 import java.sql.*;
 import java.util.ArrayList;

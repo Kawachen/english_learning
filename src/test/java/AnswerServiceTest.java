@@ -2,8 +2,8 @@ import static org.junit.Assert.*;
 
 import DBConnection.DBConnection;
 import Services.Answer.AnswerService;
-import Utilities.Answer;
-import Utilities.User;
+import Datamodel.Answer;
+import Datamodel.User;
 import org.junit.Test;
 
 import java.sql.Connection;

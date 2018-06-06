@@ -1,7 +1,7 @@
 package Services.AccessToken;
 
 import DBConnection.DBConnection;
-import Utilities.AccessToken;
+import Datamodel.AccessToken;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

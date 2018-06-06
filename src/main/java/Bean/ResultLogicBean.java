@@ -3,7 +3,7 @@ package Bean;
 import Services.Answer.AnswerService;
 import Services.Question.QuestionService;
 import Services.User.UserService;
-import Utilities.*;
+import Datamodel.*;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;

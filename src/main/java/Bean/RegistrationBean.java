@@ -6,7 +6,7 @@ import Enums.Role;
 import Exceptions.StringDidNotMatchOnRoleException;
 import Services.AccessToken.AccessTokenService;
 import Services.User.UserService;
-import Utilities.User;
+import Datamodel.User;
 import org.apache.commons.validator.routines.EmailValidator;
 import utils.HashGeneratorUtils;
 import utils.SessionUtils;

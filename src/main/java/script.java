@@ -1,5 +1,5 @@
 import Services.Question.QuestionService;
-import Utilities.Question;
+import Datamodel.Question;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

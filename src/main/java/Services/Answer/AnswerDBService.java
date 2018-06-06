@@ -1,8 +1,8 @@
 package Services.Answer;
 
 import DBConnection.DBConnection;
-import Utilities.Answer;
-import Utilities.User;
+import Datamodel.Answer;
+import Datamodel.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

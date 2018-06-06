@@ -3,7 +3,7 @@ import static org.junit.Assert.*;
 import DBConnection.DBConnection;
 import Services.AccessToken.AccessTokenDBService;
 import Services.AccessToken.AccessTokenService;
-import Utilities.AccessToken;
+import Datamodel.AccessToken;
 import org.junit.Test;
 
 import java.sql.Connection;

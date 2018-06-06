@@ -1,9 +1,9 @@
-package Utilities;
+package Datamodel;
 
 import Enums.Role;
 import Exceptions.StringDidNotMatchOnRoleException;
-import Utilities.UserKomponents.UserName;
-import Utilities.UserKomponents.UserPassword;
+import Datamodel.UserKomponents.UserName;
+import Datamodel.UserKomponents.UserPassword;
 
 public class User {
 

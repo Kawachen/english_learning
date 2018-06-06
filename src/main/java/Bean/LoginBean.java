@@ -2,7 +2,7 @@ package Bean;
 
 import Enums.LoginError;
 import Services.User.UserService;
-import Utilities.User;
+import Datamodel.User;
 import utils.HashGeneratorUtils;
 import utils.SessionUtils;
 

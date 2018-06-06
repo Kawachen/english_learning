@@ -3,9 +3,9 @@ package Bean;
 import Services.Answer.AnswerService;
 import Services.Question.QuestionService;
 import Services.User.UserService;
-import Utilities.Answer;
-import Utilities.Question;
-import Utilities.User;
+import Datamodel.Answer;
+import Datamodel.Question;
+import Datamodel.User;
 import utils.SessionUtils;
 
 import javax.faces.bean.ManagedBean;

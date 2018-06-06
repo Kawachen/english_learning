@@ -1,6 +1,6 @@
 package Services.User;
 
-import Utilities.User;
+import Datamodel.User;
 
 import java.util.ArrayList;
 

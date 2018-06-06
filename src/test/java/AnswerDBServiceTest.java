@@ -3,8 +3,8 @@ import static org.junit.Assert.*;
 import DBConnection.DBConnection;
 import Services.Answer.AnswerDBInterface;
 import Services.Answer.AnswerDBService;
-import Utilities.Answer;
-import Utilities.User;
+import Datamodel.Answer;
+import Datamodel.User;
 import org.junit.Test;
 
 import java.sql.Connection;

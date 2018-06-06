@@ -2,7 +2,7 @@ package Bean;
 
 import Enums.Role;
 import Services.User.UserService;
-import Utilities.User;
+import Datamodel.User;
 import utils.SessionUtils;
 
 import javax.faces.bean.ManagedBean;

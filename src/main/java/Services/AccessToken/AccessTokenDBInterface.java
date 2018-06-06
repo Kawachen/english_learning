@@ -1,6 +1,6 @@
 package Services.AccessToken;
 
-import Utilities.AccessToken;
+import Datamodel.AccessToken;
 
 import java.util.ArrayList;
 

@@ -1,7 +1,7 @@
 package Services.Answer;
 
-import Utilities.Answer;
-import Utilities.User;
+import Datamodel.Answer;
+import Datamodel.User;
 
 import java.util.ArrayList;
 

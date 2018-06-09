@@ -1,5 +1,7 @@
 package Datamodel;
 
+import Exceptions.ToManyItemsInListException;
+
 import java.util.ArrayList;
 
 public class Question {
@@ -51,7 +53,9 @@ public class Question {
     }
 
     public void setPossibleAnswers(ArrayList<String> possibleAnswers) {
-        this.possibleAnswers = possibleAnswers;
+        for(int i = 0; i < 4;i++) {
+            this.addPossibleAnswer(possibleAnswers.get(i));
+        }
     }
 
     public ArrayList<Integer> getCorrectAnswers() {
@@ -59,7 +63,9 @@ public class Question {
     }
 
     public void setCorrectAnswers(ArrayList<Integer> correctAnswers) {
-        this.correctAnswers = correctAnswers;
+        for(int i = 0; i < 4;i++) {
+            this.addCorrectAnswer(correctAnswers.get(i));
+        }
     }
 
     public String getGrammarSection() {

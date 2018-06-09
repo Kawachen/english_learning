@@ -1,5 +1,7 @@
 package Services.AccessToken;
 
+import Datamodel.AccessToken;
+
 import java.util.ArrayList;
 
 public interface AccessTokenDBInterface {

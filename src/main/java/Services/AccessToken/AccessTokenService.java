@@ -1,5 +1,6 @@
 package Services.AccessToken;
 
+import Datamodel.AccessToken;
 import utils.HashGeneratorUtils;
 
 import java.util.ArrayList;

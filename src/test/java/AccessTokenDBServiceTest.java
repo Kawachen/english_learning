@@ -12,7 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class AccessTokenDBServiceTest { ddd
+public class AccessTokenDBServiceTest {
 
     private Connection connection;
     private AccessTokenDBInterface accessTokenDBService = new AccessTokenDBService();

@@ -1,6 +1,7 @@
 import static org.junit.Assert.*;
 
 import DBConnection.DBConnection;
+import Datamodel.AccessToken;
 import Services.AccessToken.AccessTokenDBInterface;
 import Services.AccessToken.AccessTokenDBService;
 import org.junit.Test;

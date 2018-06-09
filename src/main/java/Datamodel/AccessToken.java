@@ -21,8 +21,4 @@ public class AccessToken {
     public String getAccessString() {
         return accessString;
     }
-
-    public void setAccessString(String accessString) {
-        this.accessString = accessString;
-    }
 }

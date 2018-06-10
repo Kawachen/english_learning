@@ -8,18 +8,18 @@ public class MistakeAnswer {
     private String questionPhrase;
     private String grammarSection;
     private String exercise;
-    private ArrayList<Integer> chosenAnswers;
-    private ArrayList<Integer> correctAnswers;
-    private ArrayList<String> possibleAnswers;
+    private ArrayList<Integer> chosenAnswers = new ArrayList<>();
+    private ArrayList<Integer> correctAnswers = new ArrayList<>();
+    private ArrayList<String> possibleAnswers = new ArrayList<>();
 
     public MistakeAnswer(int questionId, String questionPhrase, ArrayList<Integer> chosenAnswers, ArrayList<Integer> correctAnswers, ArrayList<String> possibleAnswers, String grammarSection, String exercise) {
-        this.questionId = questionId;
-        this.questionPhrase = questionPhrase;
-        this.grammarSection = grammarSection;
-        this.chosenAnswers = chosenAnswers;
-        this.correctAnswers = correctAnswers;
-        this.possibleAnswers = possibleAnswers;
-        this.exercise = exercise;
+        this.setQuestionId(questionId);
+        this.setQuestionPhrase(questionPhrase);
+        this.setChosenAnswers(chosenAnswers);
+        this.setCorrectAnswers(correctAnswers);
+        this.setPossibleAnswers(possibleAnswers);
+        this.setGrammarSection(grammarSection);
+        this.setExercise(exercise);
     }
 
     public int getQuestionId() {
@@ -43,7 +43,9 @@ public class MistakeAnswer {
     }
 
     public void setChosenAnswers(ArrayList<Integer> chosenAnswers) {
-        this.chosenAnswers = chosenAnswers;
+        for(int i = 0; i < 4; i++) {
+            this.chosenAnswers.add(chosenAnswers.get(i));
+        }
     }
 
     public ArrayList<Integer> getCorrectAnswers() {
@@ -51,7 +53,9 @@ public class MistakeAnswer {
     }
 
     public void setCorrectAnswers(ArrayList<Integer> correctAnswers) {
-        this.correctAnswers = correctAnswers;
+        for(int i = 0; i < 4; i++) {
+            this.correctAnswers.add(correctAnswers.get(i));
+        }
     }
 
     public ArrayList<String> getPossibleAnswers() {
@@ -59,7 +63,9 @@ public class MistakeAnswer {
     }
 
     public void setPossibleAnswers(ArrayList<String> possibleAnswers) {
-        this.possibleAnswers = possibleAnswers;
+        for(int i = 0; i < 4; i++) {
+            this.possibleAnswers.add(possibleAnswers.get(i));
+        }
     }
 
     public String getGrammarSection() {

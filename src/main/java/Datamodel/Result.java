@@ -6,11 +6,8 @@ public class Result {
     private int countTotalMistakes;
     private ArrayList<MistakeAnswer> mistakeAnswers = new ArrayList<MistakeAnswer>();
 
-    public void addMistakeToCountTotalMistakes() {
+    public void addMistakeAnswer(MistakeAnswer answer) {
         this.countTotalMistakes++;
-    }
-
-    public void addAnswerToMistakeAnswers(MistakeAnswer answer) {
         this.mistakeAnswers.add(answer);
     }
 
@@ -18,15 +15,7 @@ public class Result {
         return countTotalMistakes;
     }
 
-    public void setCountTotalMistakes(int countTotalMistakes) {
-        this.countTotalMistakes = countTotalMistakes;
-    }
-
     public ArrayList<MistakeAnswer> getMistakeAnswers() {
         return mistakeAnswers;
-    }
-
-    public void setMistakeAnswers(ArrayList<MistakeAnswer> mistakeAnswers) {
-        this.mistakeAnswers = mistakeAnswers;
     }
 }

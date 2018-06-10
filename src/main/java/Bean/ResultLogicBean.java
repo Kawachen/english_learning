@@ -44,10 +44,9 @@ public class ResultLogicBean {
                         }
                     }
                     if(mistake) {
-                        this.result.addMistakeToCountTotalMistakes();
                         Question question = questionService.getQuestionById(i+1);
                         MistakeAnswer mistakeAnswer = new MistakeAnswer(question.getId(), question.getQuestionPhrase(), answers.get(i).getChosenAnswers(), question.getCorrectAnswers(), question.getPossibleAnswers(), question.getGrammarSection(), question.getExercise());
-                        this.result.addAnswerToMistakeAnswers(mistakeAnswer);
+                        this.result.addMistakeAnswer(mistakeAnswer);
                     }
                 }
             }

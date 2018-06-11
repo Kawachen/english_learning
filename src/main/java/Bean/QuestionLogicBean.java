@@ -32,7 +32,7 @@ public class QuestionLogicBean {
         UserService userService = new UserService();
         this.user = userService.getUserByEmailAddress(SessionUtils.getSession().getAttribute("email").toString());
         this.answerService = new AnswerService(user);
-        this.actualQuestionId = this.answerService.getLatestAnswerQuestionId();
+        this.actualQuestionId = this.answerService.getFirstNewAnswerQuestionId();
         this.firstQuestionId = this.actualQuestionId;
         this.startTime = new Timestamp(System.currentTimeMillis());
         this.questionService = new QuestionService();

@@ -55,7 +55,7 @@ public class AnswerDBService implements AnswerDBInterface {
     }
 
     private ResultSet selectAnswerByUserEmailAddress(String emailAddress) throws SQLException {
-        PreparedStatement preparedStatement = this.connectionPool.getConnection().prepareStatement("SELECT * FROM result LEFT JOIN chosenanswer ON result.id = chosenanswer.result_id WHERE result.user_email='"+emailAddress+"' ORDER BY result.id ASC;");
+        PreparedStatement preparedStatement = this.connectionPool.getConnection().prepareStatement("SELECT * FROM result LEFT JOIN chosenanswer ON result.id = chosenanswer.result_id WHERE result.user_email='"+emailAddress+"' ORDER BY result.id ASC, chosenanswer.id ASC;");
         ResultSet dBdata = preparedStatement.executeQuery();
         return dBdata;
     }
@@ -65,9 +65,12 @@ public class AnswerDBService implements AnswerDBInterface {
         int result_id_previous = 0;
         int chosenAnswers_id_previous = 0;
         Answer answer = new Answer();
+        boolean isThereAtLeastOneAnswer = false;
         while (resultSet.next()) {
+            isThereAtLeastOneAnswer = true;
             if(resultSet.isFirst()) {
                 result_id_previous = resultSet.getInt(1);
+                answer.setId(resultSet.getInt(1));
                 answer.setQuestionId(resultSet.getInt("question_id"));
             } else if(result_id_previous < resultSet.getInt(1)) {
                 answers.add(answer);
@@ -75,12 +78,12 @@ public class AnswerDBService implements AnswerDBInterface {
                 result_id_previous = resultSet.getInt(1);
                 answer.setQuestionId(resultSet.getInt("question_id"));
             }
-            if(chosenAnswers_id_previous < resultSet.getInt(6)) {
-                chosenAnswers_id_previous = resultSet.getInt(6);
+            if(chosenAnswers_id_previous < resultSet.getInt(5)) {
+                chosenAnswers_id_previous = resultSet.getInt(5);
                 answer.addChosenAnswer(resultSet.getInt("chosenAnswer"));
             }
         }
-        answers.add(answer);
+        if(isThereAtLeastOneAnswer) answers.add(answer);
         return answers;
     }
 

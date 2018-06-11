@@ -30,8 +30,8 @@ public class AnswerService {
         }
     }
 
-    public int getLatestAnswerQuestionId() {
-        if(answers != null || answers.size() != 0) {
+    public int getFirstNewAnswerQuestionId() {
+        if(answers != null && answers.size() != 0) {
             firstNewAnswerId = answers.get(answers.size()-1).getQuestionId() + 1;
         }
         return firstNewAnswerId;
@@ -62,7 +62,7 @@ public class AnswerService {
         this.answerDBService.updateTestWorkingTimeByUserIdInToDB(newDuration, userId);
     }
 
-    public Long getTestWorkingTimeByUserId(int userId) {
+    public long getTestWorkingTimeByUserId(int userId) {
         return this.answerDBService.selectTestWorkingTimeByUserIdFromDB(userId);
     }
 }

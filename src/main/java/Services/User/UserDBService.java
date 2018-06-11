@@ -97,14 +97,13 @@ public class UserDBService implements UserDBInterface {
     }
 
     private void updateUser(User user) throws SQLException{
-        PreparedStatement preparedStatement = dBConnection.prepareStatement("UPDATE user SET firstname = ?, lastname = ?, email = ?, password = ?, salt = ?, role = ? WHERE id = ?;");
+        PreparedStatement preparedStatement = dBConnection.prepareStatement("UPDATE user SET firstname = ?, lastname = ?, password = ?, salt = ?, role = ? WHERE id = ?;");
         preparedStatement.setString(1, user.getFirstName());
         preparedStatement.setString(2, user.getLastName());
-        preparedStatement.setString(3, user.getEmailAddress());
-        preparedStatement.setString(4, user.getPassword());
-        preparedStatement.setString(5, Integer.toString(user.getSalt()));
-        preparedStatement.setString(6, user.getRole().toString());
-        preparedStatement.setString(7, Integer.toString(user.getId()));
+        preparedStatement.setString(3, user.getPassword());
+        preparedStatement.setString(4, Integer.toString(user.getSalt()));
+        preparedStatement.setString(5, user.getRole().toString());
+        preparedStatement.setString(6, Integer.toString(user.getId()));
         preparedStatement.executeUpdate();
     }
 
@@ -113,7 +112,9 @@ public class UserDBService implements UserDBInterface {
         PreparedStatement preparedStatement = dBConnection.prepareStatement("SELECT * FROM user;");
         ResultSet resultSet = preparedStatement.executeQuery();
         while(resultSet.next()) {
-            users.add(new User(resultSet.getInt("id"), resultSet.getString("firstname"), resultSet.getString("lastname"), resultSet.getString("email"), resultSet.getString("password"), resultSet.getInt("salt")));
+            User user = new User(resultSet.getInt("id"), resultSet.getString("firstname"), resultSet.getString("lastname"), resultSet.getString("email"), resultSet.getString("password"), resultSet.getInt("salt"));
+            user = setRoleForUser(resultSet.getString("role"), user);
+            users.add(user);
         }
         return users;
     }

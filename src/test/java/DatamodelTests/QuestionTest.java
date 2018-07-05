@@ -22,13 +22,18 @@ public class QuestionTest {
             add(testPossibleAnswer1);
             add(testPossibleAnswer2);
             add(testPossibleAnswer3);
+        }
+    };
+    private ArrayList<String> testPossibleAnswersRight2 = new ArrayList<String>() {
+        {
+            addAll(testPossibleAnswersRight);
             add(testPossibleAnswer4);
         }
     };
     private String testPossibleAnswer5 = "sample5";
     private ArrayList<String> testPossibleAnswersWrong = new ArrayList<String>() {
         {
-            addAll(testPossibleAnswersRight);
+            addAll(testPossibleAnswersRight2);
             add(testPossibleAnswer5);
         }
     };
@@ -41,13 +46,18 @@ public class QuestionTest {
             add(testCorrectAnswer1);
             add(testCorrectAnswer2);
             add(testCorrectAnswer3);
+        }
+    };
+    private ArrayList<Integer> testCorrectAnswersRight2 = new ArrayList<Integer>() {
+        {
+            addAll(testCorrectAnswersRight);
             add(testCorrectAnswer4);
         }
     };
     private int testCorrectAnswer5 = 4;
     private ArrayList<Integer> testCorrectAnswerWrong = new ArrayList<Integer>() {
         {
-            addAll(testCorrectAnswersRight);
+            addAll(testCorrectAnswersRight2);
             add(testCorrectAnswer5);
         }
     };
@@ -55,9 +65,27 @@ public class QuestionTest {
     private String testExercise = "page 42";
 
     @Test
-    public void testCreateQuestionObject() {
+    public void testCreateQuestionObjectWith4PossibleAndCorrectAnswers() {
         Question question = new Question();
         assertEquals(Question.class, question.getClass());
+        Question question1 = new Question(testQuestionPhrase, testPossibleAnswersRight2, testCorrectAnswersRight2, testGrammarSection, testExercise);
+        assertEquals(testQuestionPhrase, question1.getQuestionPhrase());
+        int i = 0;
+        for (String testPossibleAnswer: testPossibleAnswersRight2) {
+            assertEquals(testPossibleAnswer, question1.getPossibleAnswers().get(i));
+            i++;
+        }
+        int s = 0;
+        for (Integer testCorrectAnswer: testCorrectAnswersRight2) {
+            assertEquals(testCorrectAnswer, question1.getCorrectAnswers().get(s));
+            s++;
+        }
+        assertEquals(testGrammarSection, question1.getGrammarSection());
+        assertEquals(testExercise, question1.getExercise());
+    }
+
+    @Test
+    public void testQuestionObjectWith3PossibleAndCorrectAnswers() {
         Question question1 = new Question(testQuestionPhrase, testPossibleAnswersRight, testCorrectAnswersRight, testGrammarSection, testExercise);
         assertEquals(testQuestionPhrase, question1.getQuestionPhrase());
         int i = 0;

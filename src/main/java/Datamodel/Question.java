@@ -1,5 +1,7 @@
 package Datamodel;
 
+import com.itextpdf.text.Paragraph;
+
 import java.util.ArrayList;
 
 public class Question {
@@ -55,8 +57,13 @@ public class Question {
     }
 
     public void setPossibleAnswers(ArrayList<String> possibleAnswers) {
-        for(int i = 0; i < 4;i++) {
-            this.addPossibleAnswer(possibleAnswers.get(i));
+        this.possibleAnswers.clear();
+        if(possibleAnswers.size() <=4) {
+            this.possibleAnswers = possibleAnswers;
+        } else {
+            for(int i = 0; i < 4; i++) {
+                this.possibleAnswers.add(possibleAnswers.get(i));
+            }
         }
     }
 
@@ -65,8 +72,13 @@ public class Question {
     }
 
     public void setCorrectAnswers(ArrayList<Integer> correctAnswers) {
-        for(int i = 0; i < 4;i++) {
-            this.addCorrectAnswer(correctAnswers.get(i));
+        this.correctAnswers.clear();
+        if(correctAnswers.size() <= 4) {
+            this.correctAnswers = correctAnswers;
+        } else {
+            for(int i = 0; i < 4; i++) {
+                this.correctAnswers.add(correctAnswers.get(i));
+            }
         }
     }
 

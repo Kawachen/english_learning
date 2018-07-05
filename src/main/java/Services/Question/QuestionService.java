@@ -49,8 +49,8 @@ public class QuestionService {
     public void deleteQuestionByIdAndUpdateDB(int questionId) {
         int questionIndex = questionId -1;
         int dBQuestionId = questions.get(questionIndex).getdBId();
-        updateQuestionIds(questionIndex);
         this.questions.remove(questionIndex);
+        updateQuestionIds(questionIndex);
         questionDBService.deleteQuestionByIdAndUpdateApplicationIds(dBQuestionId);
     }
 

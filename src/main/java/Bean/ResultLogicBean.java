@@ -33,24 +33,7 @@ public class ResultLogicBean {
 
         ArrayList<Answer> answers = this.answerService.getAnswers();
 
-        //compare the questions and results
-        if(questionService.getCountOfQuestions() == answers.size()) {
-            for(int i = 0;i < questionService.getCountOfQuestions();i++) {
-                for (int correctAnswer: questionService.getQuestionById(i+1).getCorrectAnswers()) {
-                    boolean mistake = true;
-                    for(int chosenAnswer: answers.get(i).getChosenAnswers()) {
-                        if(correctAnswer == chosenAnswer) {
-                            mistake = false;
-                        }
-                    }
-                    if(mistake) {
-                        Question question = questionService.getQuestionById(i+1);
-                        MistakeAnswer mistakeAnswer = new MistakeAnswer(question.getId(), question.getQuestionPhrase(), answers.get(i).getChosenAnswers(), question.getCorrectAnswers(), question.getPossibleAnswers(), question.getGrammarSection(), question.getExercise());
-                        this.result.addMistakeAnswer(mistakeAnswer);
-                    }
-                }
-            }
-        }
+        compareQuestionAndAnswers(questionService, answers);
     }
 
     public Result getResult() {
@@ -128,5 +111,25 @@ public class ResultLogicBean {
     private PdfPCell getClassicTextCell(String text) {
         Font classicFont = FontFactory.getFont("Arial", 10);
         return new PdfPCell(new Paragraph(text, classicFont));
+    }
+
+    private void compareQuestionAndAnswers(QuestionService questionService, ArrayList<Answer> answers) {
+        if(questionService.getCountOfQuestions() == answers.size()) {
+            for(int i = 0;i < questionService.getCountOfQuestions();i++) {
+                for (int correctAnswer: questionService.getQuestionById(i+1).getCorrectAnswers()) {
+                    boolean mistake = true;
+                    for(int chosenAnswer: answers.get(i).getChosenAnswers()) {
+                        if(correctAnswer == chosenAnswer) {
+                            mistake = false;
+                        }
+                    }
+                    if(mistake) {
+                        Question question = questionService.getQuestionById(i+1);
+                        MistakeAnswer mistakeAnswer = new MistakeAnswer(question.getId(), question.getQuestionPhrase(), answers.get(i).getChosenAnswers(), question.getCorrectAnswers(), question.getPossibleAnswers(), question.getGrammarSection(), question.getExercise());
+                        this.result.addMistakeAnswer(mistakeAnswer);
+                    }
+                }
+            }
+        }
     }
 }

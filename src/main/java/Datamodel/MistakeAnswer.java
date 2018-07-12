@@ -43,8 +43,13 @@ public class MistakeAnswer {
     }
 
     public void setChosenAnswers(ArrayList<Integer> chosenAnswers) {
-        for(int i = 0; i < 4; i++) {
-            this.chosenAnswers.add(chosenAnswers.get(i));
+        this.chosenAnswers.clear();
+        if(chosenAnswers.size() <=4) {
+            this.chosenAnswers = chosenAnswers;
+        } else {
+            for(int i = 0; i < 4; i++) {
+                this.chosenAnswers.add(chosenAnswers.get(i));
+            }
         }
     }
 
@@ -53,8 +58,13 @@ public class MistakeAnswer {
     }
 
     public void setCorrectAnswers(ArrayList<Integer> correctAnswers) {
-        for(int i = 0; i < 4; i++) {
-            this.correctAnswers.add(correctAnswers.get(i));
+        this.correctAnswers.clear();
+        if(correctAnswers.size() <= 4) {
+            this.correctAnswers = correctAnswers;
+        } else {
+            for(int i = 0; i < 4; i++) {
+                this.correctAnswers.add(correctAnswers.get(i));
+            }
         }
     }
 
@@ -63,8 +73,13 @@ public class MistakeAnswer {
     }
 
     public void setPossibleAnswers(ArrayList<String> possibleAnswers) {
-        for(int i = 0; i < 4; i++) {
-            this.possibleAnswers.add(possibleAnswers.get(i));
+        this.possibleAnswers.clear();
+        if(possibleAnswers.size() <=4) {
+            this.possibleAnswers = possibleAnswers;
+        } else {
+            for(int i = 0; i < 4; i++) {
+                this.possibleAnswers.add(possibleAnswers.get(i));
+            }
         }
     }
 

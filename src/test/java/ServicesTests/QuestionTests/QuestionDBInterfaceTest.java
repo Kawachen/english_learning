@@ -11,7 +11,7 @@ import static org.junit.Assert.assertFalse;
 
 import java.util.ArrayList;
 
-public class QuestionDBServiceTest {
+public class QuestionDBInterfaceTest {
 
     private String questionPhrase = "What if?";
     private String grammarSection = "Samplesection";

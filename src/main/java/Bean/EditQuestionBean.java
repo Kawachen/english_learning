@@ -60,7 +60,7 @@ public class EditQuestionBean {
     public void saveQuestion() {
         ArrayList<Integer> correctAnswerList = convertCorrectAnswers();
         ArrayList<String> possibleAnswerList = convertPossibleAnswers();
-        if(this.possibleAnswersToCorrectAnswersCheck(possibleAnswerList, correctAnswerList)) {
+        if(this.fitsPossibleAnswersToCorrectAnswersCheck(possibleAnswerList, correctAnswerList)) {
             Question question = this.questionService.getQuestionById(questionId);
             question.setQuestionPhrase(this.questionPhrase);
             question.setGrammarSection(this.grammarSection);
@@ -78,7 +78,7 @@ public class EditQuestionBean {
     public void saveNewQuestion() {
         ArrayList<Integer> correctAnswerList = convertCorrectAnswers();
         ArrayList<String> possibleAnswerList = convertPossibleAnswers();
-        if(this.possibleAnswersToCorrectAnswersCheck(possibleAnswerList, correctAnswerList)) {
+        if(this.fitsPossibleAnswersToCorrectAnswersCheck(possibleAnswerList, correctAnswerList)) {
             Question question = new Question();
             question.setQuestionPhrase(this.questionPhrase);
             question.setGrammarSection(this.grammarSection);
@@ -203,6 +203,7 @@ public class EditQuestionBean {
         possibleAnswers[3] = possibleAnswer4;
     }
 
+    //this is just here to show what a shitty framework jsf is
     public String[] getPossibleAnswers() {
         Question question = questionService.getQuestionById(questionId);
         if(question != null)
@@ -230,7 +231,7 @@ public class EditQuestionBean {
         this.correctAnswers = correctAnswers;
     }
 
-    private boolean possibleAnswersToCorrectAnswersCheck(ArrayList<String> possibleAnswers, ArrayList<Integer> correctAnswers) {
+    private boolean fitsPossibleAnswersToCorrectAnswersCheck(ArrayList<String> possibleAnswers, ArrayList<Integer> correctAnswers) {
         for(Integer correctAnswer: correctAnswers) {
             if(possibleAnswers.size() < correctAnswer+1) {
                 return false;

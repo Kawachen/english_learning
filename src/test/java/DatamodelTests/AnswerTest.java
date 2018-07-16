@@ -19,8 +19,8 @@ public class AnswerTest {
     public void testCreateAnswerObject() {
         Answer answer = new Answer();
         assertEquals(Answer.class, answer.getClass());
-        Answer answer2 = new Answer(testQuestionId);
-        assertEquals(testQuestionId, answer2.getQuestionId());
+       // Answer answer2 = new Answer(testQuestionId);
+       // assertEquals(testQuestionId, answer2.getQuestionId());
     }
 
     @Test

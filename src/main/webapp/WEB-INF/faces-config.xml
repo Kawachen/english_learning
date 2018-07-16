@@ -59,18 +59,10 @@
 			<to-view-id>/secured/welcome.xhtml</to-view-id>
 			<redirect/>
 		</navigation-case>
-        <navigation-case>
-            <from-outcome>welcome</from-outcome>
-            <to-view-id>/secured/welcome.xhtml</to-view-id>
-        </navigation-case>
-	</navigation-rule>
-	<!--resultLogic page-->
-	<navigation-rule>
-		<display-name>resultLogic</display-name>
-		<from-view-id>/secured/resultLogic.xhtml</from-view-id>
 		<navigation-case>
-			<from-outcome>welcome</from-outcome>
-			<to-view-id>/secured/welcome.xhtml</to-view-id>
+			<from-outcome>quitError</from-outcome>
+			<to-view-id>/secured/welcome-error.xhtml</to-view-id>
+			<redirect/>
 		</navigation-case>
 	</navigation-rule>
     <!--welcome page-->
@@ -80,6 +72,7 @@
         <navigation-case>
             <from-outcome>questionLogic</from-outcome>
             <to-view-id>/secured/questionLogic.xhtml</to-view-id>
+			<redirect/>
         </navigation-case>
         <navigation-case>
             <from-outcome>resultLogic</from-outcome>
@@ -89,31 +82,24 @@
 			<from-outcome>login</from-outcome>
 			<to-view-id>/login.xhtml</to-view-id>
 		</navigation-case>
-		<navigation-case>
-			<from-outcome>getQuestion</from-outcome>
-			<to-view-id>/secured/teacher-section/getQuestion.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>getAccessTokens</from-outcome>
-			<to-view-id>/secured/teacher-section/getAccessTokens.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>registerUser</from-outcome>
-			<to-view-id>/secured/teacher-section/admin-section/registerUser.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>deleteUser</from-outcome>
-			<to-view-id>/secured/teacher-section/admin-section/deleteUser.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>changePassword</from-outcome>
-			<to-view-id>/secured/changePassword.xhtml</to-view-id>
-		</navigation-case>
     </navigation-rule>
-	<!--change password-->
+	<!--welcome error page-->
 	<navigation-rule>
-		<display-name>changePassword</display-name>
-		<from-view-id>/secured/changePassword.xhtml</from-view-id>
+		<display-name>welcome-error</display-name>
+		<from-view-id>/secured/welcome-error.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>questionLogic</from-outcome>
+			<to-view-id>/secured/questionLogic.xhtml</to-view-id>
+			<redirect/>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>resultLogic</from-outcome>
+			<to-view-id>/secured/resultLogic.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>login</from-outcome>
+			<to-view-id>/login.xhtml</to-view-id>
+		</navigation-case>
 	</navigation-rule>
 	<!--get question-->
 	<navigation-rule>
@@ -145,41 +131,6 @@
 			<from-outcome>allQuestions</from-outcome>
 			<to-view-id>/secured/teacher-section/getQuestion.xhtml</to-view-id>
 			<redirect/>
-		</navigation-case>
-	</navigation-rule>
-	<!--get access tokens-->
-	<navigation-rule>
-		<display-name>getAccessTokens</display-name>
-		<from-view-id>/secured/teacher-section/getAccessTokens.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>welcome</from-outcome>
-			<to-view-id>/secured/welcome.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-	<navigation-rule>
-		<display-name>registerUser</display-name>
-		<from-view-id>/secured/teacher-section/admin-section/registerUser.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>welcome</from-outcome>
-			<to-view-id>/secured/welcome.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-	<!--registerUser-->
-	<navigation-rule>
-		<display-name>registerUser</display-name>
-		<from-view-id>/secured/teacher-section/admin-section/registerUser.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>welcome</from-outcome>
-			<to-view-id>/secured/welcome.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-	<!--deleteUser-->
-	<navigation-rule>
-		<display-name>deleteUser</display-name>
-		<from-view-id>/secured/teacher-section/admin-section/deleteUser.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>welcome</from-outcome>
-			<to-view-id>/secured/welcome.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	<lifecycle>

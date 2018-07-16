@@ -1,5 +1,6 @@
 package Bean;
 
+import Logger.QuestionLogicLogger;
 import Services.Answer.AnswerService;
 import Services.Question.QuestionService;
 import Services.User.UserService;
@@ -15,6 +16,9 @@ import java.sql.Timestamp;
 @ManagedBean
 @ViewScoped
 public class QuestionLogicBean {
+    private int loggerId;
+    private QuestionLogicLogger logger = QuestionLogicLogger.getInstance();
+
     private User user;
 
     private AnswerService answerService;
@@ -29,6 +33,8 @@ public class QuestionLogicBean {
     private Timestamp startTime;
 
     public QuestionLogicBean(){
+        loggerId = logger.registerNewQuestionLogic();
+
         UserService userService = new UserService();
         this.user = userService.getUserByEmailAddress(SessionUtils.getSession().getAttribute("email").toString());
         this.answerService = new AnswerService(user);
@@ -72,13 +78,19 @@ public class QuestionLogicBean {
         if(actualQuestion != null) {
             this.createAnswerAndAddItToAnswerList();
         }
-        this.answerService.saveNewAnswers();
-        this.updateTestWorkingTime();
-        return "quit";
+        if (logger.doesAnyQuestionGotPreviouslyChanged()) {
+            logger.logoutQuestionLogic(loggerId);
+            return "quitError";
+        } else {
+            this.answerService.saveNewAnswers();
+            this.updateTestWorkingTime();
+            logger.logoutQuestionLogic(loggerId);
+            return "quit";
+        }
     }
 
     private void createAnswerAndAddItToAnswerList() {
-        Answer answer = new Answer(actualQuestion.getId());
+        Answer answer = new Answer(actualQuestion.getId(), actualQuestion.getQuestionPhrase(), actualQuestion.getGrammarSection(), actualQuestion.getExercise(), actualQuestion.getPossibleAnswers(), actualQuestion.getCorrectAnswers());
         for(int chosenAnswer : this.actualChosenAnswers) {
             answer.addChosenAnswer(chosenAnswer);
         }

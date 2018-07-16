@@ -22,6 +22,9 @@ public class AnswerDBInterfaceTest {
     private int testChosenAnswer1 = 2;
     private int testChosenAnswer2 = 3;
     private int testChosenAnswer3 = 0;
+    private String testQuestionPhrase = "sampleQuestion";
+    private String testGrammarSection = "sampleSection";
+    private String testExercise = "sampleCise";
     private Answer answer = new Answer();
 
     private String testFirstname = "Rudolf";
@@ -41,7 +44,9 @@ public class AnswerDBInterfaceTest {
         answer.addChosenAnswer(testChosenAnswer1);
         answer.addChosenAnswer(testChosenAnswer2);
         answer.addChosenAnswer(testChosenAnswer3);
-
+        answer.setQuestionPhrase(testQuestionPhrase);
+        answer.setGrammarSection(testGrammarSection);
+        answer.setExercise(testExercise);
         user.setRole(testRole);
     }
 

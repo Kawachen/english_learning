@@ -61,6 +61,7 @@ public class QuestionDBService implements QuestionDBInterface {
         deleteQuestion.executeUpdate();
         PreparedStatement deletePossibleAnswers = dBConnection.prepareStatement("DELETE FROM possibleanswer WHERE question_id = ?;");
         deletePossibleAnswers.setString(1, dBId);
+        deletePossibleAnswers.executeUpdate();
         PreparedStatement deleteCorrectAnswers = dBConnection.prepareStatement("DELETE FROM correctanswer WHERE question_id = ?;");
         deleteCorrectAnswers.setString(1, dBId);
         deleteCorrectAnswers.executeUpdate();

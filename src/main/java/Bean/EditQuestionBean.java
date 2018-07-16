@@ -2,6 +2,7 @@ package Bean;
 
 import Enums.EditQuestionError;
 import Enums.EditQuestionResult;
+import Logger.QuestionLogicLogger;
 import Services.Question.QuestionService;
 import Datamodel.Question;
 
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 @ManagedBean
 @RequestScoped
 public class EditQuestionBean {
-
+    private QuestionLogicLogger logger = QuestionLogicLogger.getInstance();
 
     private QuestionService questionService = new QuestionService();
 
@@ -47,17 +48,20 @@ public class EditQuestionBean {
     }
 
     public String deleteQuestion() {
+        logger.setPreviouslyChangedMarker();
         this.questionService.deleteQuestionByIdAndUpdateDB(questionId);
         return "allQuestions";
     }
 
     public String deleteQuestion(int questionId) {
+        logger.setPreviouslyChangedMarker();
         this.questionId = questionId;
         this.questionService.deleteQuestionByIdAndUpdateDB(questionId);
         return "allQuestions";
     }
 
     public void saveQuestion() {
+        logger.setPreviouslyChangedMarker();
         ArrayList<Integer> correctAnswerList = convertCorrectAnswers();
         ArrayList<String> possibleAnswerList = convertPossibleAnswers();
         if(this.fitsPossibleAnswersToCorrectAnswersCheck(possibleAnswerList, correctAnswerList)) {
@@ -76,6 +80,7 @@ public class EditQuestionBean {
     }
 
     public void saveNewQuestion() {
+        logger.setPreviouslyChangedMarker();
         ArrayList<Integer> correctAnswerList = convertCorrectAnswers();
         ArrayList<String> possibleAnswerList = convertPossibleAnswers();
         if(this.fitsPossibleAnswersToCorrectAnswersCheck(possibleAnswerList, correctAnswerList)) {

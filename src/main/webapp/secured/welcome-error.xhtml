@@ -2,14 +2,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-             xmlns:h="http://xmlns.jcp.org/jsf/html"
-             xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-             xmlns:f="http://xmlns.jcp.org/jsf/core"
-             xmlns:c="http://java.sun.com/jsp/jstl/core">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
 <ui:include src="../snippets/head.xhtml"/>
 <h:body>
     <f:view>
         <ui:include src="../snippets/menu.xhtml"/>
+        <h:outputLabel styleClass="classicText" value="Ihre Antworten konnten leider nicht gespeichert werde, da die Fragen in der zwischenzeit bearbeitet wurden. Sie können die Fragen später erneut beantworten!"/><br/>
         <h:outputLabel styleClass="classicText" value="Hallo #{userBean.userName}, hier kannst du deine englisch Kenntnisse verbessern!"/><br/>
         <h:button outcome="questionLogic"  value="zum Test"/><br/>
         <h:button outcome="resultLogic" value="zu deinen Ergebnissen"/><br/>
